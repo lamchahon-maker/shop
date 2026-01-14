@@ -355,6 +355,7 @@ def handle_message(event):
         except: pass
 
     # ---------------- MODE 3: รับออเดอร์ใหม่ ----------------
+    
     order_type = ""
     if "กลับบ้าน" in text: order_type = "#กลับบ้าน"
     elif "ร้าน" in text or "กินที่ร้าน" in text: order_type = "#กินที่ร้าน"
@@ -374,6 +375,12 @@ def handle_message(event):
             "status": "cooking"
         }
         reply_flex_order(event.reply_token, current_q, orders[current_q])
+        
+@app.route('/')
+def home():
+    return "OK", 200
 
 if __name__ == "__main__":
+
+
     app.run(port=5000)
